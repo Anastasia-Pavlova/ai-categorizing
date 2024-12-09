@@ -1,2 +1,6 @@
 /uploads
 /venv
+
+.env
+
+db.sqlite3

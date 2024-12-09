@@ -41,21 +41,18 @@ def get_image(request):
 @csrf_exempt 
 def save_image(request):
     if request.method == "POST":
-        print(request.FILES)
         if "image" in request.FILES and "category" in request.POST:
             uploaded_image = request.FILES["image"]
             category = request.POST["category"]
             name = request.POST.get("name", "")  
 
             defined_category = classify_image(uploaded_image.temporary_file_path())
-            print(defined_category)
             image_obj = Images.objects.create(
                 name=name,
                 image=uploaded_image,
                 category=category,
                 ai_category=defined_category
             )
-            print(image_obj)
 
             return JsonResponse({
                 "message": "Image saved successfully",

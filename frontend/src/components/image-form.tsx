@@ -10,13 +10,13 @@ export const ImageForm = () => {
   const [selectedImageType, setSelectedImageType] = useState<string>(
     imageTypes[0]
   );
+
   const handleSelectImage = (e: ChangeEvent<HTMLInputElement>) => {
     setSelectedImage(e.target.files?.[0]);
   };
 
   const handleSubmitForm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('selectedImage', selectedImage);
     if (!selectedImage || !selectedImageType) {
       console.error('Image and category are required');
       return;
@@ -27,10 +27,9 @@ export const ImageForm = () => {
     formData.append('name', selectedImage.name);
     formData.append('category', selectedImageType);
     axios
-      .post('http://127.0.0.1:8000/image/save', formData, {
+      .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/image/save`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       })
-      .then((res) => console.log('res', res))
       .catch((err) => console.error(err));
   };
 
