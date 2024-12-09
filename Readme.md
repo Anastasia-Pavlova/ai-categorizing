@@ -7,11 +7,13 @@ AI Categorize Image is a web application designed to categorize uploaded images 
 ### Installation
 
 1. **Clone the repository**:
+
    ```bash
-   git clone https://github.com/your-username/ai-categorize-image.git
+   git clone https://github.com/Anastasia-Pavlova/ai-categorizing.git
    cd ai-categorize-image
 
    ```
+
 2. **Environment Variables**:
 
    - Create `.env` files for both the backend and frontend with the necessary configurations and get variables from `.env.example` files.
